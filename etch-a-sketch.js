@@ -1,5 +1,19 @@
 function changeBackgroundColor(e) {
-    e.target.style.backgroundColor = `black`;
+    const r = Math.floor(Math.random() * 256); // 0 to 255
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    e.target.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+}
+
+function increaseOpacity(e) {
+    const currentOpacity = e.target.style.opacity;
+    
+    if (!currentOpacity) {
+        e.target.style.opacity = 0.1;
+    }
+    else {
+        e.target.style.opacity = Math.min(parseFloat(currentOpacity) + 0.1, 1);
+    }
 }
 
 function generateSketch(containerNode, noPerSides, cellLength) {
@@ -13,6 +27,7 @@ function generateSketch(containerNode, noPerSides, cellLength) {
             let cell = document.createElement('div');
             cell.style.cssText = `border: 1px solid rgb(0, 0, 0, 0.1); height: ${cellLength}px; width: ${cellLength}px;`;
             cell.addEventListener('mouseenter', changeBackgroundColor);
+            cell.addEventListener('mouseenter', increaseOpacity);
             rowContainer.appendChild(cell);
         }
     }
