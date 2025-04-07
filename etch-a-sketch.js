@@ -25,7 +25,8 @@ function generateSketch(containerNode, ops) {
     
         for (let col = 1; col <= ops.cellsPerSide; col++) {
             let cell = document.createElement('div');
-            cell.style.cssText = `border: 1px solid rgb(0, 0, 0, 0.1); height: ${ops.cellLength}px; width: ${ops.cellLength}px;`;
+            cell.style.cssText = `border: 1px solid rgb(0, 0, 0, 0.1); 
+                height: ${ops.cellLength}px; width: ${ops.cellLength}px;`;
             
             // add event listener to each cell
             cell.addEventListener('mouseenter', (e) => {
@@ -40,9 +41,9 @@ function generateSketch(containerNode, ops) {
     }
 }
 
-const container = document.querySelector('#container');
+const container = document.querySelector('#sketch');
 const btn = document.querySelector('button');
-const errorSpan = document.querySelector('span');
+const errorSpan = document.querySelector('.error-msg');
 
 // using object for passing isDrawing by reference
 let options = {
